@@ -1,0 +1,6 @@
+-- CreateTable
+CREATE TABLE "Image" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "label" TEXT NOT NULL,
+    "url" TEXT NOT NULL
+);
