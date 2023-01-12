@@ -21,7 +21,12 @@ function AddImageForm() {
         router.push("/");
     };
     return (
-        <form action="/api/image" method="POST" onSubmit={handleSubmit}>
+        <form
+            action="/api/image"
+            method="POST"
+            onSubmit={handleSubmit}
+            className="font-roboto"
+        >
             <label htmlFor="label">Label</label>
             <input
                 type="text"

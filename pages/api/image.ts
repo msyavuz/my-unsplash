@@ -31,7 +31,8 @@ export default async function handler(
         const images = await getAllImages();
         return res.status(200).json({ imgs: images });
     } else if (req.method == "DELETE") {
-        await deleteImage(+req.body);
+        console.log(req.body, typeof req.body);
+        await deleteImage(+req.body.id);
         return res.status(200).end();
     } else if (req.method == "POST") {
         await newImage(req.body.url, req.body.label);

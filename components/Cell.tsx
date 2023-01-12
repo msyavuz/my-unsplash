@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 type cellProps = {
@@ -8,6 +10,17 @@ type cellProps = {
 
 function Cell(props: cellProps) {
     const [open, setOpen] = useState(false);
+    const router = useRouter();
+
+    async function handleDelete(e: React.MouseEvent<HTMLButtonElement>) {
+        e.preventDefault();
+        await axios.delete("/api/image", {
+            data: {
+                id: props.id,
+            },
+        });
+        router.reload();
+    }
 
     return (
         <div
@@ -18,6 +31,7 @@ function Cell(props: cellProps) {
             onMouseLeave={() => {
                 setOpen(false);
             }}
+            className="relative"
         >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -27,10 +41,19 @@ function Cell(props: cellProps) {
                 src={props.url}
             ></img>
             {open && (
-                <div>
-                    <button>Delete</button>
-                    <p>{props.label}</p>
-                </div>
+                <>
+                    <p className="absolute left-2 bottom-2 text-white font-roboto font-bold">
+                        {props.label}
+                    </p>
+                    <div className="absolute right-2 top-2">
+                        <button
+                            className="bg-rose-700 rounded-full border-2 border-rose-700 px-2 py-1 text-white font-roboto"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </>
             )}
         </div>
     );
