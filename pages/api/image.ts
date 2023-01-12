@@ -14,8 +14,13 @@ async function deleteImage(id: number) {
     await prisma.image.delete({ where: { id: id } });
 }
 
-async function newImage(image: { data: image }) {
-    await prisma.image.create(image);
+async function newImage(url: string, label: string) {
+    await prisma.image.create({
+        data: {
+            url: url,
+            label: label,
+        },
+    });
 }
 
 export default async function handler(
@@ -29,7 +34,7 @@ export default async function handler(
         await deleteImage(+req.body);
         return res.status(200).end();
     } else if (req.method == "POST") {
-        await newImage({ data: req.body });
+        await newImage(req.body.url, req.body.label);
         return res.status(200).end();
     }
 }

@@ -1,19 +1,26 @@
+import Cell from "./Cell";
+
+type image = {
+    id: number;
+    url: string;
+    label: string;
+};
+
 type GridProps = {
-    imageURLS: string[];
+    images: image[];
 };
 
 function Grid(props: GridProps) {
     return (
         <div className="columns-2 md:columns-3 lg:columns-4">
-            {props.imageURLS.map((image) => {
+            {props.images.map((image) => {
                 return (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                        className="mb-4"
-                        alt={image}
+                    <Cell
                         key={crypto.randomUUID()}
-                        src={image}
-                    ></img>
+                        id={image.id}
+                        label={image.label}
+                        url={image.url}
+                    />
                 );
             })}
         </div>

@@ -1,43 +1,35 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import AddImageForm from "../components/AddImageForm";
 import Grid from "../components/Grid";
 
 export default function Home() {
-    const [label, setLabel] = useState("");
-    const [url, setUrl] = useState("");
+    const [images, setImages] = useState<image[]>();
 
-    const handleLabelChange = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        setLabel(e.target.value);
+    type images = {
+        imgs: image[];
     };
-    const handleUrlChange = (e: ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
-        setUrl(e.target.value);
+
+    type image = {
+        id: number;
+        url: string;
+        label: string;
     };
+
+    useEffect(() => {
+        async function getImages() {
+            const res = await axios.get("/api/image");
+            const data = await res.data;
+            console.log(data);
+            setImages(data.imgs);
+        }
+        getImages();
+    }, []);
 
     return (
         <>
-            <form action="/api/image" method="POST">
-                <label htmlFor="label">Label</label>
-                <input
-                    type="text"
-                    id="label"
-                    name="label"
-                    value={label}
-                    onChange={handleLabelChange}
-                    required
-                />
-                <label htmlFor="url">URL</label>
-                <input
-                    type="text"
-                    name="url"
-                    id="url"
-                    value={url}
-                    onChange={handleUrlChange}
-                    required
-                />
-                <button type="submit">Submit</button>
-            </form>
-            <Grid imageURLS={[]} />
+            <AddImageForm />
+            {images && <Grid images={images} />}
         </>
     );
 }
