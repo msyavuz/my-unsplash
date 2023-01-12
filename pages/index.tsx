@@ -20,7 +20,6 @@ export default function Home() {
         async function getImages() {
             const res = await axios.get("/api/image");
             const data = await res.data;
-            console.log(data);
             setImages(data.imgs);
         }
         getImages();
