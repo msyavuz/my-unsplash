@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { Transition } from "@headlessui/react";
 
 type cellProps = {
     id: number;
@@ -40,21 +41,29 @@ function Cell(props: cellProps) {
                 key={crypto.randomUUID()}
                 src={props.url}
             ></img>
-            {open && (
-                <>
-                    <p className="absolute left-2 bottom-2 text-white font-roboto font-bold">
-                        {props.label}
-                    </p>
-                    <div className="absolute right-2 top-2">
-                        <button
-                            className="bg-rose-700 rounded-full border-2 border-rose-700 px-2 py-1 text-white font-roboto"
-                            onClick={handleDelete}
-                        >
-                            Delete
-                        </button>
-                    </div>
-                </>
-            )}
+
+            <Transition
+                appear={true}
+                show={open}
+                enter="transition-opacity duration-500"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-500"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+            >
+                <p className="absolute left-2 bottom-2 text-white font-roboto font-bold">
+                    {props.label}
+                </p>
+                <div className="absolute right-2 top-2">
+                    <button
+                        className="bg-rose-700 rounded-full border-2 border-rose-700 px-2 py-1 text-white font-roboto"
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </button>
+                </div>
+            </Transition>
         </div>
     );
 }

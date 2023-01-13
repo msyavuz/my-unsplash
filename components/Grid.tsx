@@ -12,7 +12,7 @@ type GridProps = {
 
 function Grid(props: GridProps) {
     return (
-        <div className="columns-2 md:columns-3 lg:columns-4">
+        <div className="columns-2 md:columns-3 lg:columns-4 ">
             {props.images.map((image) => {
                 return (
                     <Cell
