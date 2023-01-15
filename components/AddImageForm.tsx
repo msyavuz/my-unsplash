@@ -31,14 +31,14 @@ function AddImageForm() {
         <>
             <button
                 onClick={handleNewImage}
-                className="px-2 py-4 bg-emerald-700 font-roboto text-center text-white font-bold shadow"
+                className="px-2 py-2 bg-emerald-700 font-roboto text-center text-white font-bold shadow rounded hover:bg-emerald-300"
             >
                 New Image
             </button>
 
             {showModal && (
                 <div
-                    className="fixed grid place-content-center inset-0 bg-gray-400 bg-opacity-50 overflow-y-auto z-10"
+                    className="fixed grid place-content-center inset-0 bg-slate-700 bg-opacity-50 overflow-y-auto z-10"
                     onClick={(e) => {
                         if (e.target == e.currentTarget) {
                             setShowModal(false);
@@ -49,27 +49,34 @@ function AddImageForm() {
                         action="/api/image"
                         method="POST"
                         onSubmit={handleSubmit}
-                        className="font-roboto"
+                        className="w-96 h-96 grid place-content-center gap-8 font-roboto  text-white font-bold rounded"
                     >
-                        <label htmlFor="label">Label</label>
                         <input
                             type="text"
                             id="label"
                             name="label"
                             value={label}
                             onChange={handleLabelChange}
+                            placeholder="Label"
+                            className="bg-black text-white placeholder:text-white px-2 py-2 focus:outline-none w-96"
                             required
                         />
-                        <label htmlFor="url">URL</label>
                         <input
                             type="text"
                             name="url"
                             id="url"
                             value={url}
                             onChange={handleUrlChange}
+                            placeholder="Url"
+                            className="bg-black text-white placeholder:text-white px-2 py-2 focus:outline-none "
                             required
                         />
-                        <button type="submit">Submit</button>
+                        <button
+                            type="submit"
+                            className="px-2 py-2 bg-emerald-700 font-roboto text-center text-white font-bold shadow rounded hover:bg-emerald-300"
+                        >
+                            Submit
+                        </button>
                     </form>
                 </div>
             )}

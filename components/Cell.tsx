@@ -52,10 +52,10 @@ function Cell(props: cellProps) {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
             >
-                <p className="absolute left-2 bottom-2 text-white font-roboto font-bold">
+                <p className="text-center absolute left-2 bottom-2 text-white font-roboto font-bold bg-black rounded px-2 py-1">
                     {props.label}
                 </p>
-                <div className="absolute right-2 top-2">
+                <div className="absolute right-2 top-2 ">
                     <button
                         className="bg-rose-700 rounded-full border-2 border-rose-700 px-2 py-1 text-white font-roboto"
                         onClick={handleDelete}
