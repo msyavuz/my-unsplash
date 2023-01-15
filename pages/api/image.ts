@@ -23,13 +23,29 @@ async function newImage(url: string, label: string) {
     });
 }
 
+async function getImageByLabel(label: string) {
+    const images = await prisma.image.findMany({
+        where: {
+            label: {
+                contains: label,
+            },
+        },
+    });
+    return images;
+}
+
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
     if (req.method == "GET") {
-        const images = await getAllImages();
-        return res.status(200).json({ imgs: images });
+        if (req.query.label) {
+            const images = await getImageByLabel(req.query.label!.toString());
+            return res.status(200).json({ imgs: images });
+        } else {
+            const images = await getAllImages();
+            return res.status(200).json({ imgs: images });
+        }
     } else if (req.method == "DELETE") {
         console.log(req.body, typeof req.body);
         await deleteImage(+req.body.id);

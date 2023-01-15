@@ -29,7 +29,12 @@ function AddImageForm() {
     };
     return (
         <>
-            <button onClick={handleNewImage}>New Image</button>
+            <button
+                onClick={handleNewImage}
+                className="px-2 py-4 bg-emerald-700 font-roboto text-center text-white font-bold shadow"
+            >
+                New Image
+            </button>
 
             {showModal && (
                 <div
