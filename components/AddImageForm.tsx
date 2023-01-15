@@ -33,7 +33,7 @@ function AddImageForm() {
 
             {showModal && (
                 <div
-                    className="fixed grid place-content-center inset-0 bg-gray-400 bg-opacity-50 overflow-y-auto"
+                    className="fixed grid place-content-center inset-0 bg-gray-400 bg-opacity-50 overflow-y-auto z-10"
                     onClick={(e) => {
                         if (e.target == e.currentTarget) {
                             setShowModal(false);

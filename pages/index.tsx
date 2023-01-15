@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddImageForm from "../components/AddImageForm";
 import Grid from "../components/Grid";
+import Topbar from "../components/Topbar";
 
 export default function Home() {
     const [images, setImages] = useState<image[]>();
@@ -27,7 +28,7 @@ export default function Home() {
 
     return (
         <>
-            <AddImageForm />
+            <Topbar />
             {images && <Grid images={images} />}
         </>
     );

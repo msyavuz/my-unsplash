@@ -36,7 +36,7 @@ function Cell(props: cellProps) {
         >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-                className="mb-4"
+                className="mb-4 rounded"
                 alt={props.url}
                 key={crypto.randomUUID()}
                 src={props.url}
