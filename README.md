@@ -14,11 +14,9 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Alternatively public demo: [Link](https://my-unsplash-1nk0b7un7-msyavuz.vercel.app/)
-
 ## Used technologies
 
-- NextJS
-- TailwindCSS
-- Prisma
-- SQLite
+-   NextJS
+-   TailwindCSS
+-   Prisma
+-   SQLite
