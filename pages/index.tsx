@@ -42,9 +42,9 @@ export default function Home() {
     }, [search]);
 
     return (
-        <>
+        <div className="w-full">
             <Topbar />
             {images && <Grid images={images} />}
-        </>
+        </div>
     );
 }

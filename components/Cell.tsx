@@ -51,6 +51,7 @@ function Cell(props: cellProps) {
                 leave="transition-opacity duration-500"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
+                className="inline"
             >
                 <p className="text-center absolute left-2 bottom-2 text-white font-roboto font-bold bg-black rounded px-2 py-1">
                     {props.label}

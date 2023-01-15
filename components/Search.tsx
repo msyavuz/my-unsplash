@@ -17,7 +17,7 @@ function Search() {
                 value={search}
                 onChange={handleChange}
                 placeholder="&#x1F50E;&#xFE0E; Search"
-                className="rounded font-roboto font-semibold focus:border-slate-800 border-slate-400 shadow px-2 py-1 w-96"
+                className="rounded font-roboto font-semibold focus:border-slate-800 border-slate-400 shadow px-2 py-1 ml-2"
             />
         </div>
     );
