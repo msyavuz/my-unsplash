@@ -2,7 +2,7 @@
 
 This is a personal unsplash library project. It stores the links of images in a sqlite database for future reference with searchable custom labels.
 
-![Screenshot](https://raw.githubusercontent.com/msyavuz/my-unsplash/main/assets/Screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/msyavuz/my-unsplash/main/assets/Screenshot.webp)
 
 ## Getting Started
 
